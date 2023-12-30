@@ -1,0 +1,39 @@
+package com.Exception;
+
+import java.util.Scanner;
+
+public class ReverseString {
+               public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        scanner.close();
+
+        try {
+            String reversed = reverseString(input);
+            // show reverse string
+            System.out.println("Reversed string: " + reversed);
+                       } catch (NullPointerException e) {
+                    	   // if the string is null
+            System.out.println("Error: if the string is null.");
+            //index out of bound of exception
+        } catch (StringIndexOutOfBoundsException e) {
+                       System.out.println("Error: if the string is empty.");
+        }
+    }
+
+    private static String reverseString(String str) {
+        if (str == null) {
+            throw new NullPointerException();
+        }
+        if (str.isEmpty()) {
+        	//Exception is occurs stringindexoutofbounds of exception
+            throw new StringIndexOutOfBoundsException();
+        }
+        StringBuilder reversed = new StringBuilder();
+        for (int i = str.length() - 1; i >= 0; i--) {
+            reversed.append(str.charAt(i));
+        }
+        return reversed.toString();
+    }
+}
